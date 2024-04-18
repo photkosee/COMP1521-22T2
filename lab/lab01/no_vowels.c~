@@ -1,0 +1,41 @@
+// Phot Koseekrainiramon (z5387411)
+// COMP1521 lab01 EX1
+// on 30/05/2022
+// A C program removing all vowels from STDIN.
+
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LENGTH 100
+#define VOWEL 10
+
+void remove_vowel(int i, char vowel[VOWEL], char word[MAX_LENGTH]);
+
+int main(void) {
+    char vowel[VOWEL] = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+    char word[MAX_LENGTH];
+    int i = 0;
+    while (scanf("[^EOF]", word[i])) {
+        i++;
+        int j = 0;
+        while (word[j] != '\0') {	    
+            remove_vowel(j, vowel, word);
+            j++;
+        }
+    }
+    return 0;
+}
+
+void remove_vowel(int i, char vowel[VOWEL], char word[MAX_LENGTH]) {
+    int j = 0;
+    int check_vowel = 0;
+    while (j < VOWEL) {
+        if (word[i] != vowel[j]) {
+            check_vowel++;
+        }
+        j++;
+    }
+    if (check_vowel == VOWEL) {
+        printf("%c", word[i]);
+    }
+}
